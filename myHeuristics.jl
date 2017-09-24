@@ -4,7 +4,7 @@
 #cette heuristique de depart sera develloper ici
 #Mise en place d'une heuristique de recherche locale de type plus profonde descente
 #Celle ci sera fondee sur deux voisins
-module DM1_metaheuristics
+module myHeuristics
 export CurrentSolution,FindingAdmissingBaseSolution1,DeepLocalSearch,IsConsistent,
 #Order variable by decreasing cost
 #Align the constraints with the variable order
@@ -53,4 +53,5 @@ function IsConsistent(CS::CurrentSolution)
    end
    CS.CurrentObjectiveValue+=CS.Coefficients[CS.LastModifiedIndex]
    return true,CS
+end
 end
