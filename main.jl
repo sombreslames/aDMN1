@@ -80,6 +80,6 @@ for i in eachindex(FileList)
       z_problemConstraints[i] =  BPP.NBconstraints
       println("Objective value: ", getobjectivevalue(m)) # getObjectiveValue(model_name) gives the optimum objective value
       =#
-      quit()
+      break
    end
 end

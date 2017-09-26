@@ -24,14 +24,7 @@ end
 #LastRightMemberValue est la matrice des contraintes "Actualisee" ou si la variable Xj a pour valeur 1, les lignes de la matrice ou Xj est present seront passee a 0 et inversement
 function FindingAdmissingBaseSolution1(CS::CurrentSolution)
    println("Il y a ",CS.NBvariables," variables")
-   #=for i = 1:CS.NBvariables
-      CS.Utility[1,i]   = i
-      nb                = sum(CS.LeftMembers_Constraints[:,i])
-      CS.Utility[2,i]   = CS.Variables[i]/nb
-   end=#
    CS    =     UpdateUtility(CS)
-   #sortrows(CS.Utility,by=y->y[2])
-   #sortcols(Ratio)
    println(CS.Utility)
    return CS
 end
@@ -44,12 +37,13 @@ function UpdateUtility(CS::CurrentSolution)
       CS.Utility[1,i]   = i
       nb                = sum(CS.LastLeftMemberValue_Constraint[:,i])
       if nb == 0
-         CS.Utility[2,i]=0
+         CS.Utility[2,i]   = 0
       else
          CS.Utility[2,i]   = CS.Variables[i]/nb
       end
    end
-   sortrows(CS.Utility,by=y->y[2])
+   sortcols(CS.Utility)
+   #A continuer , trier sur la ligne 2 en alignant la ligne 1 sur cet ordre
    return CS
 end
 
