@@ -62,7 +62,7 @@ for i in eachindex(FileList)
    BPP = ReadFile(string("./Data/",FileList[i]))
    if BPP.NBvariables < 1000 && BPP.NBconstraints < 1000
       tic()
-      cs = CurrentSolution(BPP.NBconstraints, BPP.NBvariables, 0, 0, BPP.Variables,Vector(BPP.NBvariables), BPP.LeftMembers_Constraints, Vector(BPP.NBconstraints), zeros(2,BPP.NBvariables), BPP.LeftMembers_Constraints)
+      cs = CurrentSolution(BPP.NBconstraints, BPP.NBvariables, 0, 0, BPP.Variables,Vector(BPP.NBvariables), BPP.LeftMembers_Constraints, Vector(BPP.NBconstraints), zeros(3,BPP.NBvariables), BPP.LeftMembers_Constraints)
       FindingAdmissingBaseSolution1(cs)
       #@variable(  m,  0 <= x[1:BPP.NBvariables] <= 1,Int)
       #=@variable(  m,  x[1:BPP.NBvariables], Bin)

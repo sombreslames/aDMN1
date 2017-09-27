@@ -41,7 +41,9 @@ function UpdateUtility(CS::CurrentSolution)
       else
          CS.Utility[2,i]   = CS.Variables[i]/nb
       end
+      CS.Utility[3,i]      = nb
    end
+   #COnserver les poids dans un vecteur et les decrementer au fur et a mesure qu'une contrainte est saturee ou incrementer lorsqu'elle est liberee
    sortcols(CS.Utility)
    #A continuer , trier sur la ligne 2 en alignant la ligne 1 sur cet ordre
    return CS
