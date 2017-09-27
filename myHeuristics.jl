@@ -24,8 +24,17 @@ end
 #LastRightMemberValue est la matrice des contraintes "Actualisee" ou si la variable Xj a pour valeur 1, les lignes de la matrice ou Xj est present seront passee a 0 et inversement
 function FindingAdmissingBaseSolution1(CS::CurrentSolution)
    println("Il y a ",CS.NBvariables," variables")
-   CS    =     UpdateUtility(CS)
-   println(CS.Utility)
+   CS    = UpdateUtility(CS)
+   cs1   = CS
+   for i = 1:CS.NBvariables
+      answer,cs1   =  SetToOne(cs1,i)
+      if answer
+         CS    = cs1
+      else
+         cs1   = cs
+      end
+   end
+   println("La valeur objective obtenue par la construction de l'heuristique est : ",cs1.CurrentObjectiveValue)
    return CS
 end
 #Fonction recursive permettant l'eploration des solutions voisines admissibles
